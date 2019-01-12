@@ -1,0 +1,43 @@
+@CHARSET"UFT-8";
+
+body {
+	margin-top: 25px;
+	margin-left: 30px;
+	margin-bottom: 25px;
+	font-size: 11pt;
+}
+
+td, th {
+	padding: 5px 10px;
+}
+
+.summarySheet{
+  overflow-x: auto
+}
+
+ul {
+  padding: 0;
+  position: relative;
+}
+
+ul li {
+  color: white;
+  background: #81d0cb;
+  line-height: 1.5;
+  padding: 0.5em 0.5em 0.5em 2em;
+  border-bottom: 2px solid white;
+  list-style-type: none!important;
+  font-weight: bold; /*好みで太字に*/
+}
+
+ul li:before {/*疑似要素*/
+  font-family: "Font Awesome 5 Free";
+  content: "\f14a";
+  position: absolute;
+  left : 0.5em; /*左端からのアイコンまでの距離*/
+  color: white; /*アイコン色*/
+}
+
+ol{
+	font-size: 10pt;
+}
