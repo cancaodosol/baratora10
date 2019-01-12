@@ -97,7 +97,7 @@ public class InsertSalesResultServlet extends HttpServlet {
 
 		request.setAttribute("LSR", LastSalesResults);
 
-		RequestDispatcher rdis = request.getRequestDispatcher("InsertSalesResults3.jsp");
+		RequestDispatcher rdis = request.getRequestDispatcher("InsertSalesResults.jsp");
 		rdis.forward(request, response);
 	}
 
