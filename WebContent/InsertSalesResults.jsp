@@ -18,7 +18,7 @@
 
 <body>
 
-	<!--<form action="InsertSalesResultServlet" method= "POST">-->
+	<form action="InsertSalesResultServlet" method= "POST">
 		<table>
 			<tr>
 				<td><div id = "itemname">品目ID：</td><td><%=sales.getItemId() %><td>品名：</td><td><%=sales.getItemName() %></div></td>
@@ -106,9 +106,9 @@
 
 			</tbody>
 		</table>
-		<!--<input type="hidden" name="itemid" value="<%=sales.getItemId()%>"/>-->
-		<!--<input type="submit" value="登録する"/>-->
-	<!--</form>-->
+		<input type="hidden" name="itemid" value="<%=sales.getItemId()%>"/>
+		<input type="submit" value="登録する"/>
+	</form>
 
 	<script>
 
