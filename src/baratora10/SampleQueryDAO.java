@@ -51,4 +51,43 @@ public class SampleQueryDAO {
 
 		return Results;
 	}
+
+	public List<List<String>> getListMetaDate(String sql,int itemid) throws SQLException,ClassNotFoundException{
+		Class.forName(DRIVER);
+		Connection conn = DriverManager.getConnection(URL, USER, PASS);
+
+		List<String> fields = new ArrayList<String>();
+		List<List<String>> Results = new ArrayList<List<String>>();
+
+		PreparedStatement state = conn.prepareStatement(sql);
+		state.setInt(1, itemid);
+
+		ResultSet result = state.executeQuery();
+		ResultSetMetaData rsmd = result.getMetaData();
+
+		for(int i=1;i<=rsmd.getColumnCount();i++) {
+			fields.add(rsmd.getColumnName(i));
+		}
+
+		Results.add(fields);
+
+		while(result.next()) {
+			List<String> records = new ArrayList<String>();
+			for(String field : fields) {
+				records.add(result.getString(field));
+			}
+			Results.add(records);
+		}
+
+		for(List<String> Result : Results) {
+			List<String> records = Result;
+			for(String record: records) {
+				System.out.print(record + ",");
+			}
+			System.out.println("/");
+		}
+
+		return Results;
+	}
+
 }
