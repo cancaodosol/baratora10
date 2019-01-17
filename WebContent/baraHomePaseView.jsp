@@ -13,7 +13,7 @@
 <body>
 	<p1>〇バラ売り上げ管理</p1>
 	<ul>
-		<div onmouseover="apper(this)" onmouseout="disapper(this)">
+		<div onclick="display(this)">
 			<li>売上入力画面</li>
 				<div style="display:none">
 					<ol>
@@ -24,7 +24,7 @@
 					</ol>
 				</div>
 		</div>
-		<div onmouseover="apper(this)" onmouseout="disapper(this)">
+		<div onclick="display(this)">
 			<li>売上参照画面(一覧表示)</li>
 			<div style="display:none">
 				<ol>
@@ -36,7 +36,7 @@
 				</ol>
 			</div>
 		</div>
-		<div onmouseover="apper(this)" onmouseout="disapper(this)">
+		<div onclick="display(this)">
 			<li>売上参照画面(月次)</li>
 			<div style="display:none">
 				<ol>
@@ -48,7 +48,7 @@
 				</ol>
 			</div>
 		</div>
-		<div onmouseover="apper(this)" onmouseout="disapper(this)">
+		<div onclick="display(this)">
 			<li>売上参照画面(週次)</a></li>
 			<div style="display:none">
 				<ol>
@@ -70,17 +70,22 @@
 	</ul>
 
 	<script>
+			function display(obj){
+				var check = obj.firstElementChild.nextElementSibling.style.display
+				if(check === "block"){
+					disapper(obj);
+				}else{
+					apper(obj);
+				}
+			}
+
 			function apper(obj){
 				var element = obj.firstElementChild.nextElementSibling;
-				console.log(obj.firstElementChild);
-				console.log(element);
 				element.style.display = "block";
 			}
 
 			function disapper(obj){
 				var element = obj.firstElementChild.nextElementSibling;
-				console.log(obj.firstElementChild);
-				console.log(element);
 				element.style.display = "none";
 			}
 	</script>
