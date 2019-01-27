@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
@@ -20,6 +21,7 @@ import baratora10.RankQueryDAO;
 import baratora10.SalesResult;
 import baratora10.SalesResultsQueryDAO;
 import baratora10.SalesResultsUpdateDAO;
+import baratora10.Transform;
 
 /**
  * Servlet implementation class InsertSalesResultServlet
@@ -81,6 +83,7 @@ public class InsertSalesResultServlet extends HttpServlet {
 		}catch(SQLException e) {
 		}catch(ClassNotFoundException e) {
 		}
+		System.out.println(ship_date);
 
 		//年度累計結果の取得
 		if(ship_date != null) {
@@ -91,10 +94,19 @@ public class InsertSalesResultServlet extends HttpServlet {
 				e.printStackTrace();
 			}catch(ClassNotFoundException e) {
 			}
+
+			System.out.println(ship_date);
+			Transform trn = new Transform();
+			Calendar cal = trn.getCal(ship_date);
+			System.out.println(cal);
+			cal.add(Calendar.DATE, 2);
+			System.out.println(cal);
+			ship_date = trn.getDate(cal);
 		}
 
+		System.out.println(ship_date);
 
-
+		request.setAttribute("ship_date", ship_date);
 		request.setAttribute("LSR", LastSalesResults);
 
 		RequestDispatcher rdis = request.getRequestDispatcher("InsertSalesResults.jsp");
@@ -112,7 +124,7 @@ public class InsertSalesResultServlet extends HttpServlet {
 
 		int itemId = Integer.parseInt(request.getParameter("itemid"));
 		int area = Integer.parseInt(request.getParameter("area"));
-		String next = "index.html";
+		String next = "./baraHomePaseServlet";
 
 		try {
 			for(int i=1;i<=11;i++) {

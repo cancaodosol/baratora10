@@ -1,3 +1,4 @@
+<%@page import="java.sql.Date"%>
 <%@page import="baratora10.SalesResult"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.HashMap"%>
@@ -10,11 +11,11 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="style.css" type="text/css">
 	<title>販売代金請求通知書の登録</title>
+	<%Date ship_date = (Date)request.getAttribute("ship_date"); %>
 	<%List<SalesResult> LSR = (List<SalesResult>)request.getAttribute("LSR"); %>
 	<%int index = 0; %>
 	<%SalesResult sales = LSR.get(index); %>
 </head>
-
 
 <body>
 
@@ -24,7 +25,7 @@
 				<td><div id = "itemname">品目ID：</td><td><%=sales.getItemId() %><td>品名：</td><td><%=sales.getItemName() %></div></td>
 			</tr>
 			<tr>
-				<td><div>出荷日：</div></td><td><input id="date" type = "date" name="date" value = "<%=sales.getShip_date() %>" style="text-align: right;"　onchange="getDayOfWeek()"/><div id="dayOfWeek"></div></td>
+				<td><div>出荷日：</div></td><td><input id="date" type = "date" name="date" value = "<%=ship_date %>" style="text-align: right;"/></td>
 				<td><div>品種坪数：</div></td><td><input id = "area" type = "number" name="area" value = "<%=sales.getArea() %>" style="text-align: right;"/></td>
 			</tr>
 		</table>
@@ -107,10 +108,18 @@
 			</tbody>
 		</table>
 		<input type="hidden" name="itemid" value="<%=sales.getItemId()%>"/>
-		<input type="submit" value="登録する"/>
+		<button id="sbt">登録する</button>
 	</form>
 
 	<script>
+		//送信確認
+		var sbt = document.getElementById("sbt");
+		sbt.addEventListener('click',function(){
+			var result = window.confirm('この内容で売り上げ登録してもいいですか？\nそんな簡単には修正できません。');
+			if(result){
+				document.myform.submit();
+			}
+		});
 
 		//累計値保存用配列
 		//累計数量
@@ -299,21 +308,6 @@
 			ava_ttslr.innerText = (parseFloat(t_ttslr,10)/parseFloat(area,10)).toFixed(2);
 
 		}
-
-		//曜日取得
-		function getDayOfWeek(){
-			var date = document.getElementById("date");
-			var dateFormat = new Date();
-			dateFormat.setDate(date.value);
-			var dayOfWeekStr = [ "日", "月", "火", "水", "木", "金", "土" ][dateFormat.getDay()];
-
-			console.log(dateFormat);
-			console.log(dayOfWeekStr);
-
-			var dayOfWeek = document.getElementById("dayOfWeek");
-			dayOfWeek.innerText = dayOfWeekStr;
-		}
-
 
 		//控除金額入力時に数字以外の排他チェックと精算金額の算出を行う。
 		function checkEX(){
