@@ -12,7 +12,7 @@ public class Transform {
 	}
 
 	public Date getDate(Calendar cal) {
-		Date date = new Date(cal.getTime().getTime());
+		Date date = new Date(cal.getTimeInMillis());
 		return date;
 	}
 

@@ -7,24 +7,26 @@ body {
 	font-size: 11pt;
 }
 
-table{
+
+
+th,tr:last-child td {
+  border-bottom:2px solid #005ab3;
+}
+
+
+table {
   border-collapse:collapse;
   margin:0 auto;
 }
-th{
+
+th {
   color:#005ab3;
 }
-td{
+
+td {
   border-bottom:1px dashed #999;
 }
-th,tr:last-child td{
-  border-bottom:2px solid #005ab3;
-}
-td,th{
-  padding:10px;
-}
-
-.summarySheet{
+.summarySheet {
   overflow-x: auto
 }
 
@@ -53,4 +55,14 @@ ul li:before {/*疑似要素*/
 
 ol{
 	font-size: 10pt;
+}
+
+.js-rank{
+  height: 10px;
+  width: 50px;
+}
+
+.js-uca{
+  height: 10px;
+  width: 50px;
 }

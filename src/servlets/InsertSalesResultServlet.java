@@ -93,20 +93,21 @@ public class InsertSalesResultServlet extends HttpServlet {
 			}catch(SQLException e) {
 				e.printStackTrace();
 			}catch(ClassNotFoundException e) {
+				e.printStackTrace();
 			}
 
 			System.out.println(ship_date);
 			Transform trn = new Transform();
 			Calendar cal = trn.getCal(ship_date);
-			System.out.println(cal);
+			System.out.println("ori"+cal.getTimeInMillis());
 			cal.add(Calendar.DATE, 2);
-			System.out.println(cal);
+			System.out.println("2days" +cal.getTimeInMillis());
 			ship_date = trn.getDate(cal);
 		}
 
-		System.out.println(ship_date);
+		System.out.println("last:" + ship_date);
 
-		request.setAttribute("ship_date", ship_date);
+		request.setAttribute("next_ship_date", ship_date);
 		request.setAttribute("LSR", LastSalesResults);
 
 		RequestDispatcher rdis = request.getRequestDispatcher("InsertSalesResults.jsp");

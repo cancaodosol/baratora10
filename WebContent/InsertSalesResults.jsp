@@ -11,7 +11,7 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="style.css" type="text/css">
 	<title>販売代金請求通知書の登録</title>
-	<%Date ship_date = (Date)request.getAttribute("ship_date"); %>
+	<%String next_ship_date = String.valueOf((Date)request.getAttribute("next_ship_date")); %>
 	<%List<SalesResult> LSR = (List<SalesResult>)request.getAttribute("LSR"); %>
 	<%int index = 0; %>
 	<%SalesResult sales = LSR.get(index); %>
@@ -25,7 +25,7 @@
 				<td><div id = "itemname">品目ID：</td><td><%=sales.getItemId() %><td>品名：</td><td><%=sales.getItemName() %></div></td>
 			</tr>
 			<tr>
-				<td><div>出荷日：</div></td><td><input id="date" type = "date" name="date" value = "<%=ship_date %>" style="text-align: right;"/></td>
+				<td><div>出荷日：</div></td><td><input id="date" type = "date" name="date" value = "" style="text-align: right;"/></td>
 				<td><div>品種坪数：</div></td><td><input id = "area" type = "number" name="area" value = "<%=sales.getArea() %>" style="text-align: right;"/></td>
 			</tr>
 		</table>
@@ -46,7 +46,7 @@
 			    	<tr>
 						<td>
 							<%=sales.getRankname()%>
-							<input type="hidden" name = "rank<%=i %>" value = "<%=i %>"/>
+							<input class = "js-rank" type="hidden" name = "rank<%=i %>" value = "<%=i %>"/>
 						</td>
 						<td>
 							<input class="js-uca" id = "uca<%=i %>" type="number" name = "uca<%=i %>"
