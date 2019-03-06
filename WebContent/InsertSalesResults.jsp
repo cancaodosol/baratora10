@@ -121,14 +121,14 @@
 	<script>
 		//送信確認
 		var sbt = document.getElementById("sbt");
-		sbt.addEventListener('click',function(){
+		sbt.addEventListener("click",function(){
 			var result;
 			var t_slr_amt = document.getElementById("t_slr_amt").innerText;
 			var check_t_slr_amt = document.getElementById("check_t_slr_amt").value;
 
 			console.log('ここにはきてる');
 			if(t_slr_amt != check_t_slr_amt){
-				var result = window.confirm('精算金額が正しくありません。');
+				result = window.confirm('精算金額が正しくありません。');
 				console.log('ここにはきてる金額');
 			}else{
 				result = window.confirm('この内容で売り上げ登録してもいいですか？\nそんな簡単には修正できません。');
