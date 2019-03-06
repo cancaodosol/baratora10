@@ -102,13 +102,20 @@
 					   <td>坪本数</td><td><div id="ava_qty">0</div></td>
 					   <td>累計単価</td><td><div id="av_ttslr">0</div></td>
 					   <td>坪金額</td><td><div id="ava_ttslr">0</div></td>
-			   </tr>
+				</tr>
 
-
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td><input type="text" name = "check_t_slr_amt" value = "0"/></td>
+					<td><button id="sbt">登録する</button></td>
+				</tr>
 			</tbody>
 		</table>
 		<input type="hidden" name="itemid" value="<%=sales.getItemId()%>"/>
-		<button id="sbt">登録する</button>
 	</form>
 
 	<script>
