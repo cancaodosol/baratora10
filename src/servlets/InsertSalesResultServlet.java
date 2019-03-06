@@ -110,7 +110,8 @@ public class InsertSalesResultServlet extends HttpServlet {
 		request.setAttribute("next_ship_date", ship_date);
 		request.setAttribute("LSR", LastSalesResults);
 
-		RequestDispatcher rdis = request.getRequestDispatcher("InsertSalesResults.jsp");
+		//RequestDispatcher rdis = request.getRequestDispatcher("InsertSalesResults.jsp");
+		RequestDispatcher rdis = request.getRequestDispatcher("ListSalesResults.jsp");
 		rdis.forward(request, response);
 	}
 
