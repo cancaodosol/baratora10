@@ -106,12 +106,14 @@ public class InsertSalesResultServlet extends HttpServlet {
 		}
 
 		System.out.println("last:" + ship_date);
+		if(ship_date == null) ship_date = Date.valueOf("2018-08-01");
+		System.out.println("last:" + ship_date);
 
 		request.setAttribute("next_ship_date", ship_date);
 		request.setAttribute("LSR", LastSalesResults);
 
-		//RequestDispatcher rdis = request.getRequestDispatcher("InsertSalesResults.jsp");
-		RequestDispatcher rdis = request.getRequestDispatcher("ListSalesResults.jsp");
+		RequestDispatcher rdis = request.getRequestDispatcher("InsertSalesResults.jsp");
+		//RequestDispatcher rdis = request.getRequestDispatcher("ListSalesResults.jsp");
 		rdis.forward(request, response);
 	}
 
